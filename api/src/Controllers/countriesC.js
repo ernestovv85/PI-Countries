@@ -16,15 +16,25 @@ const getApiInfo = async () => {
       population: country.population
     };
   });
-  await Country.bulkCreate(apiInfo, {include: Activity});
+  await Country.bulkCreate(apiInfo, {include: [{
+    model: Activity,
+    attributes: ["id", "name", "difficulty", "duration", "season"],
+  },]});
   return apiInfo;
 };
 
 const getCountries = async () => {
   const countries = await Country.findAll({
     attributes: ['id', 'name', 'flag', 'continents', 'capital', 'subregion', 'area', 'population'],
-    include: [Activity],
+    include: [{
+      model: Activity,
+      attributes: ["id", "name", "difficulty", "duration", "season"],
+    },],
   });
+  if(!countries.length){
+   let apiInfo = await getApiInfo();
+    return apiInfo;
+  }
   return countries;
 };
 
@@ -36,16 +46,21 @@ const getCountriesByName = async (name) => {
       },
     },
     attributes: ['id', 'name', 'flag', 'continents', 'capital', 'subregion', 'area', 'population'],
-    include: [Activity],
+    include: [{
+      model: Activity,
+      attributes: ["id", "name", "difficulty", "duration", "season"],
+    },],
   });
   return countries;
 };
 
 const getCountryById = async (id) => {
   const country = await Country.findByPk(id.toUpperCase(), {
-    attributes: ['id','name', 'flag', 'continents', 'capital', 'subregion', 'area', 'population',
-    ],
-    include: [Activity],
+    attributes: ['id','name', 'flag', 'continents', 'capital', 'subregion', 'area', 'population',],
+    include: [{
+      model: Activity,
+      attributes: ["id", "name", "difficulty", "duration", "season"],
+    },],
   });
   return country;
 };

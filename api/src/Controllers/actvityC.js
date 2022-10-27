@@ -1,30 +1,32 @@
 const { Activity, Country } = require("../db");
 
-const getActivities = async ()=>{
-  const allActivities = await Activity.findaAll({include: Country});
+const getActivities = async () => {
+  const allActivities = await Activity.findAll({include: Country});
+  console.log(allActivities)
   return allActivities;
 };
 
-const createActivity = async () => {
+const createActivity = async (body) => {
   const {
     name,
     difficulty,
     duration,
     season,
-    countries } = req.body
+    countries } = body
   const newActivity = await Activity.create({
     name,
-    difficulty,
+    difficulty: Number(difficulty),
     duration,
     season
   })
-  const country = await Country.findAll({
-      where: {
-        name: countries,
-      }    
-    })
-    newActivity.addCountries(country)
-    return newActivity;
+   const country = await Country.findAll({
+    where: {
+      name: countries,
+    }
+  })
+  console.log(country)
+  newActivity.addCountry(country)
+  return newActivity;
 }
 
 module.exports = { createActivity, getActivities };

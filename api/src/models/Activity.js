@@ -18,7 +18,8 @@ module.exports = (sequelize) => {
     },
     season: {
       type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false,
+      defaultValue: [],
+      allowNull: true,
       },
   });
 };

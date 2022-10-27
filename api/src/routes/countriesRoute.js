@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     if(name){
       const countries = await getCountriesByName(name);
       res.status(200).json(countries);
-    }else{
+    }else{ 
       const countries = await getCountries();
       res.status(200).json(countries);
     }

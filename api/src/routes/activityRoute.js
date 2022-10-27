@@ -1,5 +1,5 @@
 const express = require('express');
-const { Router } = require('express');
+const { Router, request } = require('express');
 const { createActivity, getActivities } = require('../Controllers/actvityC.js');
 
 const router = Router();
@@ -10,15 +10,14 @@ router.get('/', async (req, res) => {
     res.status(200).json(activities)
   }
   catch(error){
-    res.status(404).send('No se encontró información')
+    res.status(404).send({error})
   }
 })
 
 router.post('/', async (req, res) => {
   try {
-    const newActivity = await createActivity()
-    res.status(201).send('Actividad creada y agregada al país');
-    return newActivity;
+   const newActivity = await createActivity(req.body)
+    res.status(201).json(newActivity);
   }
   catch (error) {
     res.status(507).send('No se pudo almacenar la información');
