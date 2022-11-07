@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     difficulty: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.ENUM ('1', '2', '3', '4', '5'),
       allowNull: false,
     },
     duration: {
@@ -17,8 +17,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     season: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      defaultValue: [],
+      type: DataTypes.ARRAY (DataTypes.STRING),
       allowNull: true,
       },
   });

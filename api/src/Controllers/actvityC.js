@@ -2,8 +2,7 @@ const { Activity, Country } = require("../db");
 
 const getActivities = async () => {
   const allActivities = await Activity.findAll({include: Country});
-  console.log(allActivities)
-  return allActivities;
+    return allActivities;
 };
 
 const createActivity = async (body) => {
@@ -24,7 +23,6 @@ const createActivity = async (body) => {
       name: countries,
     }
   })
-  console.log(country)
   newActivity.addCountry(country)
   return newActivity;
 }
