@@ -14,7 +14,7 @@ export default function SearchBar() {
   function handleSubmit(event) {
     event.preventDefault();
     dispatch(countriesByName(name));
-    setName('')
+    setName('');
   };
 
   return (
