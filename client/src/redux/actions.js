@@ -60,8 +60,6 @@ export function createActivities(payload) {
 export function getDetail(id) {
   return async function (dispatch) {
     let json = await axios.get(`http://localhost:3001/countries/${id}`);
-    console.log(json)
-    console.log('detail')
     return dispatch({
       type: GET_DETAIL,
       payload: json.data
