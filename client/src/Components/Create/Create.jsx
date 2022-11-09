@@ -23,21 +23,25 @@ export default function Create() {
 
   function validate(input) {
     let errors = {};
+    let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+
     if (!input.name.trim()) {
       errors.name = 'Se necesita nombre de actividad'
-    }
+    }else if(!regexName.test(input.name.trim())) {
+      errors.name = 'El campo actividad, solo acepta letras y espacios'
+    };
     if (!input.difficulty) {
       errors.difficulty = 'Se requiere grado de dificultad'
-    }
+    };
     if (!input.duration) {
       errors.duration = 'Se requiere disponibilidad'
-    }
+    };
     if (!input.season.length) {
       errors.season = 'Se requiere al menos una temporada'
-    }
+    };
     if (!input.countries.length) {
       errors.countries = 'Se requiere al menos un país'
-    }
+    };
     return errors
   };
 

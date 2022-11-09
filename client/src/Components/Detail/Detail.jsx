@@ -22,7 +22,7 @@ export default function Detail() {
     <div className='wallpaper'>
       <div className='card-contenedor'>
         <h1 className='name'>{country.name}</h1>
-        <img src={country.flag} alt='Not found' width='400px' heigth='300px' />
+        <img src={country.flag} alt='img' className= 'pictureDetalle'/>
         <div className='itemsCountry'>
           <h3 className='textH3'>Capital: {country.capital}</h3>
           <h3 className='textH3'>Subregión: {country.subregion}</h3>

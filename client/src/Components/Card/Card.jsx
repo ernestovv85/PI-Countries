@@ -7,7 +7,7 @@ export default function Card({ name, flag, continents }) {
         <h2 className='nameHome'>{name}</h2>
         <h3 className='continentHome'>Continente: {continents}</h3>
         <div className='image-container'>
-          <img src={flag} alt='Not found' width='250px' height='200' className='image' />
+          <img src={flag} alt='img' className='image' />
         </div>
     </div>
   );
